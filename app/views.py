@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect
 from app import app
 from .forms import LoginForm
+from random import randrange
 
 @app.route('/')
 @app.route('/index')
@@ -23,3 +24,15 @@ def login():
                            title='Sign In',
                            form=form,
                            providers=app.config['OPENID_PROVIDERS'])
+
+
+@app.route('/liow', methods=['GET', 'POST'])
+def liow():
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        return ('%s, %d' %(form.openid.data, randrange(0,20)))
+        
+    return render_template('input.html',
+                           title='Liow stuff',
+                           form=form)

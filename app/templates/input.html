@@ -1,0 +1,14 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Stuff for Dr. Liow</h1>
+<form action="" method="post" name="input">
+  {{ form.hidden_tag() }}
+  <p>
+    enter in a string<br>
+    {{ form.openid(size=50) }}<br>
+  </p>
+  <p><input type="submit" value="submit"></p>
+</form>
+{% endblock %}
